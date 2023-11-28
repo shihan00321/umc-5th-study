@@ -1,6 +1,9 @@
 package umc.spring.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
@@ -16,6 +19,8 @@ import java.util.List;
 @Entity
 @Getter
 @Builder
+@DynamicInsert
+@DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Member extends BaseEntity {
@@ -29,10 +34,10 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String address;
 
-    @Column(nullable = false, length = 30)
+    //@Column(nullable = false, length = 30)
     private String email;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)
     private String birth;
 
     @Enumerated(EnumType.STRING)
@@ -46,6 +51,7 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
+    @ColumnDefault("0")
     private Integer point;
 
     private LocalDateTime inactive_date;
