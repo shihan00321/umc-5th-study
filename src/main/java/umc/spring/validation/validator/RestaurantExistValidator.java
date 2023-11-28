@@ -1,6 +1,7 @@
 package umc.spring.validation.validator;
 
 import lombok.RequiredArgsConstructor;
+import org.hibernate.mapping.Constraint;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.domain.Restaurant;
