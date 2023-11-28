@@ -6,6 +6,7 @@ import umc.spring.domain.Town;
 import umc.spring.web.dto.RestaurantRequestDTO;
 import umc.spring.web.dto.RestaurantResponseDTO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class RestaurantConverter {
@@ -13,7 +14,7 @@ public class RestaurantConverter {
         return RestaurantResponseDTO.RegisterResultDTO.builder()
                 .restaurantId(restaurant.getId())
                 .name(restaurant.getName())
-                .createdAt(restaurant.getCreatedAt())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 
