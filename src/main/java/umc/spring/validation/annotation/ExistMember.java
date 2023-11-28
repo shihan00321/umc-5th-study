@@ -1,6 +1,8 @@
 package umc.spring.validation.annotation;
 
+import umc.spring.validation.validator.CategoryExistValidator;
 import umc.spring.validation.validator.MemberExistValidator;
+
 import umc.spring.validation.validator.RestaurantExistValidator;
 
 import javax.validation.Constraint;
@@ -12,7 +14,7 @@ import java.lang.annotation.*;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MemberExistValidator.class)
 public @interface ExistMember {
-    String message() default "해당 회원이 존재하지 않습니다.";
+    String message() default "존재하지 않는 회원입니다.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
