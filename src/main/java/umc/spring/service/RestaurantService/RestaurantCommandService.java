@@ -1,4 +1,4 @@
-package umc.spring.service;
+package umc.spring.service.RestaurantService;
 
 import umc.spring.domain.Restaurant;
 import umc.spring.web.dto.RestaurantRequestDTO;

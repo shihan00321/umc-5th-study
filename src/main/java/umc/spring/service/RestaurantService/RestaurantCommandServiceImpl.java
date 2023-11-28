@@ -1,9 +1,8 @@
-package umc.spring.service;
+package umc.spring.service.RestaurantService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import umc.spring.apiPayload.code.BaseErrorCode;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.exception.handler.RestaurantHandler;
 import umc.spring.converter.RestaurantConverter;
