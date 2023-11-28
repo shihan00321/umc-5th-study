@@ -3,7 +3,7 @@ package umc.spring.validation.validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.status.ErrorStatus;
-import umc.spring.service.MemberCommandService;
+import umc.spring.service.memberService.MemberCommandService;
 import umc.spring.validation.annotation.ExistCategories;
 
 import javax.validation.ConstraintValidator;

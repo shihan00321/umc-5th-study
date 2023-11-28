@@ -1,4 +1,4 @@
-package umc.spring.service;
+package umc.spring.service.memberService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,6 @@ import umc.spring.domain.Category;
 import umc.spring.domain.Member;
 import umc.spring.domain.mapping.MemberCategory;
 import umc.spring.repository.CategoryRepository;
-import umc.spring.repository.MemberCategoryRepository;
 import umc.spring.repository.MemberRepository;
 import umc.spring.web.dto.MemberRequestDTO;
 
