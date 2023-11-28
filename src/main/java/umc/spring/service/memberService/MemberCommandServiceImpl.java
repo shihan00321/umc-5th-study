@@ -37,9 +37,4 @@ public class MemberCommandServiceImpl implements MemberCommandService {
         });
         return memberRepository.save(member);
     }
-
-    @Override
-    public boolean existById(Long id) {
-        return categoryRepository.existsById(id);
-    }
 }

@@ -34,4 +34,9 @@ public class Mission extends BaseEntity {
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     private List<MissionParticipation> missionParticipationList = new ArrayList<>();
 
+    // ==== 연관관계 메서드 ==== //
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+        restaurant.getMissionList().add(this);
+    }
 }

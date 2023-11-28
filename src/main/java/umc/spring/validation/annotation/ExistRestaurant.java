@@ -1,7 +1,5 @@
 package umc.spring.validation.annotation;
 
-import umc.spring.validation.validator.CategoryExistValidator;
-import umc.spring.validation.validator.MemberExistValidator;
 
 import umc.spring.validation.validator.RestaurantExistValidator;
 
@@ -12,9 +10,9 @@ import java.lang.annotation.*;
 @Documented
 @Target( { ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER } )
 @Retention(value = RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = MemberExistValidator.class)
-public @interface ExistMember {
-    String message() default "존재하지 않는 회원입니다.";
+@Constraint(validatedBy = RestaurantExistValidator.class)
+public @interface ExistRestaurant {
+    String message() default "해당 식당이 존재하지 않습니다.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
