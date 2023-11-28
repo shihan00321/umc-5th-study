@@ -28,4 +28,15 @@ public class MissionParticipation extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private MissionStatus status;
+
+    // ==== 연관관계 메서드 ==== //
+    public void setMember(Member member) {
+        this.member = member;
+        member.getMissionParticipationList().add(this);
+    }
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+        mission.getMissionParticipationList().add(this);
+    }
 }
