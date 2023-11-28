@@ -52,7 +52,10 @@ public class RestaurantCommandServiceImpl implements RestaurantCommandService {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
         mission.setRestaurant(restaurant);
         return missionRepository.save(mission);
+    }
 
+    @Transactional
+    @Override
     public Review registerReview(ReviewRequestDTO.WriteReviewDTO reviewDTO, Long restaurantId) {
         Review review = ReviewConverter.toReview(reviewDTO);
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
