@@ -20,4 +20,9 @@ public class MemberQueryServiceImpl implements MemberQueryService {
         return memberRepository.findById(id);
     }
 
+    @Override
+    public boolean existById(Long id) {
+        return memberRepository.existsById(id);
+    }
+
 }

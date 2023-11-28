@@ -25,7 +25,6 @@ import javax.validation.Valid;
 @RestController
 @Validated
 @RequiredArgsConstructor
-@Validated
 @RequestMapping("/restaurants")
 public class RestaurantController {
     private final RestaurantCommandService restaurantCommandService;
@@ -41,7 +40,7 @@ public class RestaurantController {
     public ApiResponse<MissionResponseDTO.RegisterMissionResult> registerMission(@RequestBody @Valid MissionRequestDTO.RegisterMission registerMissionDTO, @PathVariable @ExistRestaurant Long restaurantId) {
         Mission mission = restaurantCommandService.registerMission(registerMissionDTO, restaurantId);
         return ApiResponse.onSuccess(MissionConverter.toRegisterMissionResult(mission));
-
+    }
     @PostMapping("/{restaurantId}/reviews")
     public ApiResponse<ReviewResponseDTO.RegisterReviewResult> writeReview(@RequestBody @Valid ReviewRequestDTO.WriteReviewDTO reviewDTO, @PathVariable @ExistRestaurant Long restaurantId) {
         Review review = restaurantCommandService.registerReview(reviewDTO, restaurantId);
