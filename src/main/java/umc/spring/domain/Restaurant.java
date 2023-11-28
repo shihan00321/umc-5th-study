@@ -19,8 +19,8 @@ public class Restaurant extends BaseEntity {
 
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id")
-    private Location location;
+    @JoinColumn(name = "town_id")
+    private Town town;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
