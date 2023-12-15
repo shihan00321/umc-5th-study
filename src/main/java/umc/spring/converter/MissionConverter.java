@@ -73,6 +73,8 @@ public class MissionConverter {
                 .totalPage(missionParticipationList.getTotalPages())
                 .totalElements(missionParticipationList.getTotalElements())
                 .listSize(missionList.size())
+                .build();
+    }
 
     public static MissionResponseDTO.MissionPreviewDTO missionPreviewDTO(Mission mission) {
         return MissionResponseDTO.MissionPreviewDTO.builder()

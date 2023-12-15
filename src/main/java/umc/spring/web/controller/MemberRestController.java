@@ -66,14 +66,11 @@ public class MemberRestController {
     })
     @GetMapping("/{memberId}/missions")
     public ApiResponse<MissionParticipationResponseDTO.MyMissionListDTO> getMyReviewList(@PathVariable @ExistMember Long memberId,
-                                                                                         @RequestParam @CheckPage Integer page,
-                                                                                         @RequestParam MissionStatus status) {
+                                                                                         @RequestParam @CheckPage Integer page,@RequestParam MissionStatus status) {
         Page<MissionParticipation> missionParticipationList = memberQueryService.getMyMissionList(memberId, status, page);
         return ApiResponse.onSuccess(MissionConverter.toGetMyMissionListDTO(missionParticipationList));
     }
 
-
-    })
 
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),

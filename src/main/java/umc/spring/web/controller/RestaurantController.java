@@ -79,11 +79,12 @@ public class RestaurantController {
             @Parameter(name = "page", description = "페이지 번호, 0번이 1 페이지 입니다."),
     })
     @GetMapping("/{restaurantId}/missions")
-    public ApiResponse<MissionResponseDTO.MissionPreviewListDTO> getReviewList(@ExistRestaurant @PathVariable Long restaurantId, @CheckPage @RequestParam(name = "page") Integer page) {
+    public ApiResponse<MissionResponseDTO.MissionPreviewListDTO> getMissionList(@ExistRestaurant @PathVariable Long restaurantId, @CheckPage @RequestParam(name = "page") Integer page) {
         Page<Mission> missionList = missionQueryService.getMissionList(restaurantId, page);
+        System.out.println("missionList = " + missionList.getClass());
         return ApiResponse.onSuccess(MissionConverter.missionPreviewListDTO(missionList));
     }
-    
+
     @GetMapping("/{restaurantId}/reviews")
     @Operation(summary = "특정 가게의 리뷰 목록 조회 API",description = "특정 가게의 리뷰들의 목록을 조회하는 API이며, 페이징을 포함합니다. query String 으로 page 번호를 주세요")
     @ApiResponses({

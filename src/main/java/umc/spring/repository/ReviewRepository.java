@@ -9,9 +9,7 @@ import umc.spring.domain.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     Page<Review> findAllByRestaurant(Restaurant restaurant, PageRequest pageRequest);
-}
-
-
-public interface ReviewRepository extends JpaRepository<Review, Long> {
     Page<Review> findAllByMember(Member member, PageRequest pageRequest);
 }
+
+
