@@ -30,7 +30,6 @@ public enum ErrorStatus implements BaseErrorCode {
 
     RESTAURANT_NOT_FOUND(HttpStatus.NOT_FOUND, "RESTAURANT4001", "해당 식당이 존재하지 않습니다."),
 
-
     PAGE_NOT_NEGATIVE(HttpStatus.BAD_REQUEST, "PAGE4001", "페이지 번호는 음수일 수 없습니다.");
 
 
