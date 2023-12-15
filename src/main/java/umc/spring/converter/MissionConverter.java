@@ -3,6 +3,7 @@ package umc.spring.converter;
 import org.springframework.data.domain.Page;
 import umc.spring.domain.Mission;
 
+import umc.spring.domain.Restaurant;
 import umc.spring.domain.mapping.MissionParticipation;
 import umc.spring.web.dto.MissionParticipationRequestDTO;
 import umc.spring.web.dto.MissionParticipationResponseDTO;
@@ -43,6 +44,35 @@ public class MissionConverter {
                 .missionParticipationId(missionParticipation.getId())
                 .build();
     }
+
+
+    public static MissionParticipationResponseDTO.MyMissionDTO toGetMyMissionDTO(MissionParticipation missionParticipation) {
+        //todo fetch join으로 한번에 가져오게 수정
+        Mission mission = missionParticipation.getMission();
+        Restaurant restaurant = mission.getRestaurant();
+
+        return MissionParticipationResponseDTO.MyMissionDTO
+                .builder()
+                .restaurantName(restaurant.getName())
+                .restaurantCategoryName(restaurant.getCategory().getName())
+                .description(mission.getDescription())
+                .reward(mission.getReward())
+                .deadline(mission.getDeadline().toLocalDate())
+                .build();
+    }
+
+    public static MissionParticipationResponseDTO.MyMissionListDTO toGetMyMissionListDTO(Page<MissionParticipation> missionParticipationList) {
+        List<MissionParticipationResponseDTO.MyMissionDTO> missionList = missionParticipationList.stream()
+                .map(MissionConverter::toGetMyMissionDTO).collect(Collectors.toList());
+
+        return MissionParticipationResponseDTO.MyMissionListDTO
+                .builder()
+                .missionList(missionList)
+                .isFirst(missionParticipationList.isFirst())
+                .isLast(missionParticipationList.isLast())
+                .totalPage(missionParticipationList.getTotalPages())
+                .totalElements(missionParticipationList.getTotalElements())
+                .listSize(missionList.size())
 
     public static MissionResponseDTO.MissionPreviewDTO missionPreviewDTO(Mission mission) {
         return MissionResponseDTO.MissionPreviewDTO.builder()
