@@ -45,6 +45,7 @@ public class MissionConverter {
                 .build();
     }
 
+
     public static MissionParticipationResponseDTO.MyMissionDTO toGetMyMissionDTO(MissionParticipation missionParticipation) {
         //todo fetch join으로 한번에 가져오게 수정
         Mission mission = missionParticipation.getMission();
@@ -72,6 +73,30 @@ public class MissionConverter {
                 .totalPage(missionParticipationList.getTotalPages())
                 .totalElements(missionParticipationList.getTotalElements())
                 .listSize(missionList.size())
+
+    public static MissionResponseDTO.MissionPreviewDTO missionPreviewDTO(Mission mission) {
+        return MissionResponseDTO.MissionPreviewDTO.builder()
+                .restaurantName(mission.getRestaurant().getName())
+                .restaurantCategoryName(mission.getRestaurant().getCategory().getName())
+                .description(mission.getDescription())
+                .reward(mission.getReward())
+                .createdAt(mission.getCreatedAt().toLocalDate())
+                .build();
+    }
+
+    public static MissionResponseDTO.MissionPreviewListDTO missionPreviewListDTO(Page<Mission> missionList) {
+        List<MissionResponseDTO.MissionPreviewDTO> missionPreviewListDTO = missionList.stream()
+                .map(MissionConverter::missionPreviewDTO)
+                .collect(Collectors.toList());
+
+        return MissionResponseDTO.MissionPreviewListDTO
+                .builder()
+                .isFirst(missionList.isFirst())
+                .isLast(missionList.isLast())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionPreviewListDTO.size())
+                .missionList(missionPreviewListDTO)
                 .build();
     }
 }

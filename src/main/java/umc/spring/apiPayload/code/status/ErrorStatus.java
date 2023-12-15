@@ -32,6 +32,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     PAGE_NOT_NEGATIVE(HttpStatus.BAD_REQUEST, "PAGE4001", "페이지 번호는 음수일 수 없습니다.");
 
+
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
